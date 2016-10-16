@@ -1,0 +1,55 @@
+{
+  "name": "2gis",
+  "version": "1.0.0",
+  "description": "тестовое задание 2ГИС",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koalex/2gis-cards.git"
+  },
+  "engines": {
+    "node": ">=6",
+    "npm": ">=2"
+  },
+  "dependencies": {
+    "node-static": "^0.7.9"
+  },
+  "devDependencies": {
+    "assets-webpack-plugin": "^3.4.0",
+    "autoprefixer": "^6.4.0",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2017": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "browser-sync": "^2.14.3",
+    "browser-sync-webpack-plugin": "^1.1.2",
+    "compression-webpack-plugin": "^0.3.1",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.24.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "favicons-webpack-plugin": "0.0.7",
+    "html-webpack-plugin": "^2.22.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "postcss-loader": "^0.11.1",
+    "pug": "^2.0.0-beta6",
+    "pug-loader": "^2.3.0",
+    "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.3.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-dashboard": "^0.1.8",
+    "webpack-dev-server": "^1.15.0",
+    "write-file-webpack-plugin": "^3.1.8"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "build": "NODE_ENV=production webpack --json --profile >stats.json",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development webpack-dashboard -- webpack-dev-server --inline --hot"
+  },
+  "author": "Konstantin Aleksandrov <aleksandrovkm@gmail.com>",
+  "license": "MIT"
+}

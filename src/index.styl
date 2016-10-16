@@ -1,0 +1,111 @@
+/*
+  Author ✰ Konstantin Aleksandrov ✰
+
+  File Structure 
+    1.  Params
+    	1.1. Sub-name
+    2.  Default styles
+    3.  Cards
+    	3.1. Common styles
+    	3.2. Narrow card
+    	3.3. Wide card
+*/
+
+/************************
+  1. Params
+************************/
+v-indent           = 20px
+h-indent           = 30px
+min-card-width     = 400px
+wide-card-width    = 960px
+nested-card-indent = 60px
+page-min-width     = min-card-width + h-indent + nested-card-indent
+
+
+/************************
+  2. Default styles
+************************/
+html, body, .wrapper
+  min-height 100%
+  _height 100%
+  height 100%
+  -webkit-box-sizing border-box
+  -moz-box-sizing border-box
+  box-sizing border-box
+
+
+.wrapper
+  min-width page-min-width
+  background-color #f6f2de
+  transition background-color .2s linear
+
+.wrapper:hover
+  background-color #e9e6d3
+  transition background-color .2s linear
+
+
+/************************
+  3. Cards
+************************/
+
+/* 3.1. Common styles */
+.cards
+  position absolute
+  box-sizing border-box
+  z-index 999
+  transform translateX(h-indent) translateY(v-indent)
+
+.cards-item
+  height-indent = v-indent*2
+  position absolute
+  display flex
+  flex-direction column
+  min-width min-card-width
+  height 'calc(100vh - %s)' % height-indent
+  background #fff
+  transform translateX(0)
+  box-sizing border-box
+  opacity 0
+  transition transform .2s linear, opacity .2s linear
+  &:first-child
+    box-shadow 0 0 8px 0 rgba(255, 255, 255, 0.2), 0 0 8px 0 rgba(1, 1, 1, 0.2)
+  &:last-child
+    box-shadow 0 0 8px 0 rgba(1, 1, 1, 0.2)
+  &:hover
+    will-change transform
+  & + .cards-item:last-child
+    transform translateX(nested-card-indent)
+    transition transform .2s linear, width .2s, min-width .2s linear, opacity .2s linear
+  &:not(:last-child)
+    max-width min-card-width !important
+    transition min-width .2s linear, width .2s linear
+  &.will-deleted
+    opacity 0
+
+.cards-item__number
+  size = 98px
+  display inline-block
+  margin auto
+  width size
+  height size
+  font-size 4rem
+  text-align center
+  line-height size
+  border-radius 50%
+  border 4px solid
+  user-select none
+
+/* 3.2. Narrow card */
+.cards-item_narrow
+  width min-card-width
+  max-width min-card-width
+  opacity 1
+  transition min-width .2s linear, opacity .2s linear
+
+/* 3.3. Wide card */
+.cards-item_wide
+  width calc(100vw - 90px)
+  max-width wide-card-width
+  opacity 1
+  transition transform .2s linear, min-width .2s linear, width .2s linear, max-width .2s linear, opacity .2s linear
+
